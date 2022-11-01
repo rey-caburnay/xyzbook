@@ -1,0 +1,49 @@
+DROP TABLE IF EXISTS BOOK_AUTHOR;
+DROP TABLE IF EXISTS BOOK_DTLS;
+DROP TABLE IF EXISTS AUTHOR;
+DROP TABLE IF EXISTS BOOK;
+DROP TABLE IF EXISTS PUBLISHER;
+
+
+CREATE TABLE AUTHOR (
+id IDENTITY PRIMARY KEY ,
+firstname VARCHAR(50) NOT NULL,
+lastname VARCHAR(50) NOT NULL,
+middlename VARCHAR(50)
+);
+
+CREATE TABLE BOOK (
+id  IDENTITY PRIMARY KEY,
+title VARCHAR(100) NOT NULL
+--isbn_10 VARCHAR(10) NOT NULL,
+);
+
+CREATE TABLE BOOK_AUTHOR (
+id IDENTITY PRIMARY KEY,
+book_id int,
+author_id int);
+
+
+CREATE TABLE BOOK_DTLS (
+id IDENTITY PRIMARY KEY,
+book_id int,
+price FLOAT NOT NULL,
+publisher_id int,
+image_url varchar(255),
+edition varchar(50),
+isbn_13 VARCHAR(17) UNIQUE,
+isbn_10 varchar(13),
+publication_year int
+--UNIQUE(book_id, publisher_id) h2 will not support composite index
+
+);
+
+CREATE TABLE PUBLISHER (
+id IDENTITY PRIMARY KEY,
+name VARCHAR(100)
+
+);
+
+
+
+
